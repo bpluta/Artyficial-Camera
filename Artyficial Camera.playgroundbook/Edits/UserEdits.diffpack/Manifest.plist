@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BaseContentIdentifier</key>
+	<string>com.apple.playgrounds.blank</string>
+	<key>BaseContentVersion</key>
+	<string>1.0</string>
+	<key>ContentType</key>
+	<string>PlaygroundBookUserEdit</string>
+	<key>Diffs</key>
+	<dict>
+		<key>Chapters/Chapter1.playgroundchapter/Pages/2465DFE8-2803-4242-B4FA-C07F285A167D.playgroundpage/UserManifest.plist</key>
+		<string>Added</string>
+		<key>Chapters/Chapter1.playgroundchapter/Pages/2465DFE8-2803-4242-B4FA-C07F285A167D.playgroundpage/main.swift</key>
+		<string>Modified</string>
+		<key>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/UserManifest.plist</key>
+		<string>Added</string>
+		<key>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</key>
+		<string>Modified</string>
+		<key>Chapters/Chapter1.playgroundchapter/UserManifest.plist</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/CVPixelBufferExtension.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/CameraPosition.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/CameraSetupError.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/CameraSetupStatus.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/CameraView.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/CameraViewController.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/CameraViewMode.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/CameraViewModel.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/Filter.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/FilterPicker.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/FilterPickerItem.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/FilterPickerItemView.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/FilterPickerView.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/ImageMode.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/NightStyle.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/RoofStyle.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/SharedCode.swift</key>
+		<string>Added</string>
+		<key>UserModules/ArtyficialCamera.playgroundmodule/Sources/StainedGlassStyle.swift</key>
+		<string>Added</string>
+		<key>UserModules/UserModule.playgroundmodule/Sources/SharedCode.swift</key>
+		<string>Removed</string>
+	</dict>
+	<key>FormatVersion</key>
+	<integer>2</integer>
+	<key>UpdatedContentVersion</key>
+	<string>1.0</string>
+</dict>
+</plist>

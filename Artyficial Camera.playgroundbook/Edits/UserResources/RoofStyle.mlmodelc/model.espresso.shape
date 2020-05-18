@@ -1,0 +1,808 @@
+{
+  "layer_shapes" : {
+    "transformer_residual_5_inst_2_beta" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residualblock3_instancenorm0__fwd_mult_gamma" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_encode_2_inst_beta" : {
+      "k" : 64,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residualblock2_instancenorm0__fwd_bn_" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_instancenorm0__fwd_bn_" : {
+      "k" : 32,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_residualblock1_instancenorm1__fwd" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock3_instancenorm0__fwd_bn_" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock0_pad1" : {
+      "k" : 128,
+      "w" : 18,
+      "n" : 1,
+      "h" : 18
+    },
+    "transformer_encode_3_conv" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_encode_2_conv" : {
+      "k" : 64,
+      "w" : 32,
+      "n" : 1,
+      "h" : 32
+    },
+    "transformer_residualblock0_instancenorm0__fwd" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_encode_1_conv" : {
+      "k" : 32,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_residualblock2_pad0" : {
+      "k" : 128,
+      "w" : 18,
+      "n" : 1,
+      "h" : 18
+    },
+    "transformer_instancenorm2__fwd_bn_" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_activation2" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residual_1_inst_2_beta" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residual_5_inst_1_beta" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residual_3_inst_2_gamma" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_instancenorm4__fwd_bn_" : {
+      "k" : 32,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "index" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residualblock4__plus0" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_instancenorm0__fwd_mult_gamma" : {
+      "k" : 32,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_instancenorm5__fwd_mult_gamma" : {
+      "k" : 3,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_residualblock0_instancenorm0__fwd_mult_gamma" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residual_3_inst_1_gamma" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_decoding_2_inst_gamma" : {
+      "k" : 32,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residual_1_inst_1_beta" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residualblock1_instancenorm1__fwd_bn_" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock1__plus0" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock0_activation0" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_decoding_1_conv" : {
+      "k" : 64,
+      "w" : 32,
+      "n" : 1,
+      "h" : 32
+    },
+    "transformer_encode_1_inst_gamma" : {
+      "k" : 32,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residualblock1_instancenorm0__fwd_bn_" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock0_pad0" : {
+      "k" : 128,
+      "w" : 18,
+      "n" : 1,
+      "h" : 18
+    },
+    "transformer_residualblock2_instancenorm0__fwd_mult_gamma" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_activation1" : {
+      "k" : 64,
+      "w" : 32,
+      "n" : 1,
+      "h" : 32
+    },
+    "transformer_residualblock2_instancenorm1__fwd_mult_gamma" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_instancenorm3__fwd" : {
+      "k" : 64,
+      "w" : 32,
+      "n" : 1,
+      "h" : 32
+    },
+    "transformer_residual_5_inst_2_gamma" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residualblock3_pad1" : {
+      "k" : 128,
+      "w" : 18,
+      "n" : 1,
+      "h" : 18
+    },
+    "transformer_activation5" : {
+      "k" : 3,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_instancenorm0__fwd" : {
+      "k" : 32,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_residual_2_inst_2_beta" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residual_5_inst_1_gamma" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_instancenorm1__fwd_mult_gamma" : {
+      "k" : 64,
+      "w" : 32,
+      "n" : 1,
+      "h" : 32
+    },
+    "transformer_residualblock3_instancenorm1__fwd" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_instancenorm1__fwd_bn_" : {
+      "k" : 64,
+      "w" : 32,
+      "n" : 1,
+      "h" : 32
+    },
+    "transformer_instancenorm3__fwd_mult_gamma" : {
+      "k" : 64,
+      "w" : 32,
+      "n" : 1,
+      "h" : 32
+    },
+    "transformer_pad0" : {
+      "k" : 3,
+      "w" : 72,
+      "n" : 1,
+      "h" : 72
+    },
+    "transformer_decoding_1_inst_beta" : {
+      "k" : 64,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residualblock4_instancenorm0__fwd_mult_gamma" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock4_instancenorm1__fwd_mult_gamma" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock2_activation0" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residual_1_conv_2" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock2_instancenorm0__fwd" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_instancenorm3__fwd_bn_" : {
+      "k" : 64,
+      "w" : 32,
+      "n" : 1,
+      "h" : 32
+    },
+    "transformer_decoding_2_inst_beta" : {
+      "k" : 32,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residualblock0_instancenorm1__fwd" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock0_instancenorm1__fwd_bn_" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residual_4_conv_2" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residual_1_conv_1" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residual_2_inst_1_beta" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_instancenorm5__fwd_bn_" : {
+      "k" : 3,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_pad1" : {
+      "k" : 32,
+      "w" : 66,
+      "n" : 1,
+      "h" : 66
+    },
+    "transformer_residualblock0_instancenorm0__fwd_bn_" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residual_4_conv_1" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock2__plus0" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock4_instancenorm0__fwd" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_activation0" : {
+      "k" : 32,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_residualblock1_pad1" : {
+      "k" : 128,
+      "w" : 18,
+      "n" : 1,
+      "h" : 18
+    },
+    "transformer_encode_1_inst_beta" : {
+      "k" : 32,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_instancenorm2__fwd" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock4_pad1" : {
+      "k" : 128,
+      "w" : 18,
+      "n" : 1,
+      "h" : 18
+    },
+    "transformer_residual_4_inst_2_gamma" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residualblock3_pad0" : {
+      "k" : 128,
+      "w" : 18,
+      "n" : 1,
+      "h" : 18
+    },
+    "transformer_residual_2_conv_2" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residual_5_conv_2" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_activation4" : {
+      "k" : 32,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_instancenorm5_beta" : {
+      "k" : 3,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residual_2_conv_1" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock1_instancenorm0__fwd_mult_gamma" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock1_instancenorm0__fwd" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock1_instancenorm1__fwd_mult_gamma" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_instancenorm5__fwd" : {
+      "k" : 3,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "stylizedImage_constant_in_scale" : {
+      "k" : 1,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "stylizedImage" : {
+      "k" : 3,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "image" : {
+      "k" : 3,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_residual_2_inst_2_gamma" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_pad2" : {
+      "k" : 64,
+      "w" : 34,
+      "n" : 1,
+      "h" : 34
+    },
+    "transformer_residual_5_conv_1" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock4_activation0" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residual_3_conv_2" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residual_4_inst_1_gamma" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_instancenorm4__fwd_mult_gamma" : {
+      "k" : 32,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_upsampling1" : {
+      "k" : 64,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_residual_3_inst_2_beta" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residualblock4_instancenorm1__fwd_bn_" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residual_3_conv_1" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock1_activation0" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residual_2_inst_1_gamma" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residual_4_inst_2_beta" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_encode_3_inst_beta" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residualblock3_instancenorm1__fwd_mult_gamma" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_pad3" : {
+      "k" : 128,
+      "w" : 34,
+      "n" : 1,
+      "h" : 34
+    },
+    "transformer_residualblock4_instancenorm0__fwd_bn_" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_encode_3_inst_gamma" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residual_3_inst_1_beta" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_instancenorm4__fwd" : {
+      "k" : 32,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_residualblock2_pad1" : {
+      "k" : 128,
+      "w" : 18,
+      "n" : 1,
+      "h" : 18
+    },
+    "transformer_residual_4_inst_1_beta" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residualblock1_pad0" : {
+      "k" : 128,
+      "w" : 18,
+      "n" : 1,
+      "h" : 18
+    },
+    "transformer_activation3" : {
+      "k" : 64,
+      "w" : 32,
+      "n" : 1,
+      "h" : 32
+    },
+    "transformer_instancenorm1__fwd" : {
+      "k" : 64,
+      "w" : 32,
+      "n" : 1,
+      "h" : 32
+    },
+    "transformer_residualblock4_pad0" : {
+      "k" : 128,
+      "w" : 18,
+      "n" : 1,
+      "h" : 18
+    },
+    "transformer_decoding_2_conv" : {
+      "k" : 32,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_conv5" : {
+      "k" : 3,
+      "w" : 64,
+      "n" : 1,
+      "h" : 64
+    },
+    "transformer_pad4" : {
+      "k" : 64,
+      "w" : 66,
+      "n" : 1,
+      "h" : 66
+    },
+    "transformer_residualblock3__plus0" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock2_instancenorm1__fwd" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_encode_2_inst_gamma" : {
+      "k" : 64,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residual_1_inst_2_gamma" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residualblock3_activation0" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock0_instancenorm1__fwd_mult_gamma" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_instancenorm2__fwd_mult_gamma" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_instancenorm5_gamma" : {
+      "k" : 3,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_upsampling0" : {
+      "k" : 128,
+      "w" : 32,
+      "n" : 1,
+      "h" : 32
+    },
+    "transformer_residualblock0__plus0" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_pad5" : {
+      "k" : 32,
+      "w" : 72,
+      "n" : 1,
+      "h" : 72
+    },
+    "transformer_residualblock2_instancenorm1__fwd_bn_" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock4_instancenorm1__fwd" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residualblock3_instancenorm1__fwd_bn_" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_residual_1_inst_1_gamma" : {
+      "k" : 128,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    },
+    "transformer_residualblock3_instancenorm0__fwd" : {
+      "k" : 128,
+      "w" : 16,
+      "n" : 1,
+      "h" : 16
+    },
+    "transformer_decoding_1_inst_gamma" : {
+      "k" : 64,
+      "w" : 1,
+      "n" : 1,
+      "h" : 1
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diffs</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>/*
+ Artyficial Camera is a image filter app using CoreML models to produce style transfer to camera output. It supports capturing depth data and allows to create fun portrait images with one of three included filters applied to captured photo or occluded image of background or foreground (portrait mode).
+ 
+ Computing real-time filtered image with machine learning model is very demanding so capturing depth data is not supported while live filter preview filter is turned on. Please keep this in mind if you want to try portrait filters.
+ 
+ Have fun! (Don’t forget to switch "Enable results" off!)
+ */
+
+import SwiftUI
+import PlaygroundSupport
+
+PlaygroundPage.current.setLiveView(CameraView())
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 695}</string>
+			<key>OriginalContent</key>
+			<string>
+</string>
+			<key>OriginalRange</key>
+			<string>{0, 1}</string>
+		</dict>
+	</array>
+	<key>FormatVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

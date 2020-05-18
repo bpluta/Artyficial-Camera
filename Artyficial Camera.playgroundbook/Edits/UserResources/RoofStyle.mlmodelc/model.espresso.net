@@ -1,0 +1,2140 @@
+{
+  "transform_params" : {
+    "image" : {
+      "bias_a" : 0,
+      "bias_g" : 0,
+      "bias_r" : 0,
+      "bias_b" : 0,
+      "center_mean" : 0,
+      "is_network_bgr" : 0,
+      "scale" : 1
+    }
+  },
+  "properties" : {
+
+  },
+  "storage" : "model.espresso.weights",
+  "format_version" : 200,
+  "layers" : [
+    {
+      "pad_value" : 0,
+      "top" : "transformer_pad0",
+      "pad_pad_mode" : 0,
+      "pad_t" : 4,
+      "pad_r" : 4,
+      "pad_b" : 4,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "image",
+      "pad_l" : 4,
+      "name" : "transformer_pad0",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_encode_1_conv",
+      "blob_weights" : 1,
+      "K" : 3,
+      "name" : "transformer_encode_1_conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 32,
+      "bottom" : "transformer_pad0",
+      "weights" : {
+
+      },
+      "pad_mode" : 0,
+      "Nx" : 9,
+      "pad_value" : 0,
+      "Ny" : 9,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_encode_1_inst_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 32,
+      "blob_weights" : 5,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 3,
+      "has_tanh" : 0,
+      "name" : "transformer_encode_1_inst_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_encode_1_inst_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 32,
+      "blob_weights" : 9,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 7,
+      "has_tanh" : 0,
+      "name" : "transformer_encode_1_inst_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_encode_1_conv",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 11,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_instancenorm0__fwd_bn_",
+      "C" : 32,
+      "type" : "batchnorm",
+      "name" : "transformer_instancenorm0__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_instancenorm0__fwd_bn_,transformer_encode_1_inst_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_instancenorm0__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_instancenorm0__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_instancenorm0__fwd_mult_gamma,transformer_encode_1_inst_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_instancenorm0__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_instancenorm0__fwd",
+      "beta" : 0
+    },
+    {
+      "mode" : 0,
+      "weights" : {
+
+      },
+      "top" : "transformer_activation0",
+      "type" : "activation",
+      "name" : "transformer_activation0",
+      "bottom" : "transformer_instancenorm0__fwd"
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_pad1",
+      "pad_pad_mode" : 0,
+      "pad_t" : 1,
+      "pad_r" : 1,
+      "pad_b" : 1,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_activation0",
+      "pad_l" : 1,
+      "name" : "transformer_pad1",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_encode_2_conv",
+      "blob_weights" : 13,
+      "K" : 32,
+      "stride_x" : 2,
+      "name" : "transformer_encode_2_conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "stride_y" : 2,
+      "has_biases" : 0,
+      "C" : 64,
+      "bottom" : "transformer_pad1",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_encode_2_inst_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 64,
+      "blob_weights" : 17,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 15,
+      "has_tanh" : 0,
+      "name" : "transformer_encode_2_inst_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_encode_2_inst_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 64,
+      "blob_weights" : 21,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 19,
+      "has_tanh" : 0,
+      "name" : "transformer_encode_2_inst_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_encode_2_conv",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 23,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_instancenorm1__fwd_bn_",
+      "C" : 64,
+      "type" : "batchnorm",
+      "name" : "transformer_instancenorm1__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_instancenorm1__fwd_bn_,transformer_encode_2_inst_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_instancenorm1__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_instancenorm1__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_instancenorm1__fwd_mult_gamma,transformer_encode_2_inst_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_instancenorm1__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_instancenorm1__fwd",
+      "beta" : 0
+    },
+    {
+      "mode" : 0,
+      "weights" : {
+
+      },
+      "top" : "transformer_activation1",
+      "type" : "activation",
+      "name" : "transformer_activation1",
+      "bottom" : "transformer_instancenorm1__fwd"
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_pad2",
+      "pad_pad_mode" : 0,
+      "pad_t" : 1,
+      "pad_r" : 1,
+      "pad_b" : 1,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_activation1",
+      "pad_l" : 1,
+      "name" : "transformer_pad2",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_encode_3_conv",
+      "blob_weights" : 25,
+      "K" : 64,
+      "stride_x" : 2,
+      "name" : "transformer_encode_3_conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "stride_y" : 2,
+      "has_biases" : 0,
+      "C" : 128,
+      "bottom" : "transformer_pad2",
+      "weights" : {
+
+      },
+      "Nx" : 3,
+      "pad_mode" : 0,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_encode_3_inst_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 29,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 27,
+      "has_tanh" : 0,
+      "name" : "transformer_encode_3_inst_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_encode_3_inst_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 33,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 31,
+      "has_tanh" : 0,
+      "name" : "transformer_encode_3_inst_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_encode_3_conv",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 35,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_instancenorm2__fwd_bn_",
+      "C" : 128,
+      "type" : "batchnorm",
+      "name" : "transformer_instancenorm2__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_instancenorm2__fwd_bn_,transformer_encode_3_inst_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_instancenorm2__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_instancenorm2__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_instancenorm2__fwd_mult_gamma,transformer_encode_3_inst_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_instancenorm2__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_instancenorm2__fwd",
+      "beta" : 0
+    },
+    {
+      "mode" : 0,
+      "weights" : {
+
+      },
+      "top" : "transformer_activation2",
+      "type" : "activation",
+      "name" : "transformer_activation2",
+      "bottom" : "transformer_instancenorm2__fwd"
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_residualblock0_pad0",
+      "pad_pad_mode" : 0,
+      "pad_t" : 1,
+      "pad_r" : 1,
+      "pad_b" : 1,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_activation2",
+      "pad_l" : 1,
+      "name" : "transformer_residualblock0_pad0",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_residual_1_conv_1",
+      "blob_weights" : 37,
+      "K" : 128,
+      "name" : "transformer_residual_1_conv_1",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 128,
+      "bottom" : "transformer_residualblock0_pad0",
+      "weights" : {
+
+      },
+      "pad_mode" : 0,
+      "Nx" : 3,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_1_inst_1_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 41,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 39,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_1_inst_1_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_1_inst_1_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 45,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 43,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_1_inst_1_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_residual_1_conv_1",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 47,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_residualblock0_instancenorm0__fwd_bn_",
+      "C" : 128,
+      "type" : "batchnorm",
+      "name" : "transformer_residualblock0_instancenorm0__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock0_instancenorm0__fwd_bn_,transformer_residual_1_inst_1_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock0_instancenorm0__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock0_instancenorm0__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock0_instancenorm0__fwd_mult_gamma,transformer_residual_1_inst_1_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock0_instancenorm0__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock0_instancenorm0__fwd",
+      "beta" : 0
+    },
+    {
+      "mode" : 0,
+      "weights" : {
+
+      },
+      "top" : "transformer_residualblock0_activation0",
+      "type" : "activation",
+      "name" : "transformer_residualblock0_activation0",
+      "bottom" : "transformer_residualblock0_instancenorm0__fwd"
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_residualblock0_pad1",
+      "pad_pad_mode" : 0,
+      "pad_t" : 1,
+      "pad_r" : 1,
+      "pad_b" : 1,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_residualblock0_activation0",
+      "pad_l" : 1,
+      "name" : "transformer_residualblock0_pad1",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_residual_1_conv_2",
+      "blob_weights" : 49,
+      "K" : 128,
+      "name" : "transformer_residual_1_conv_2",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 128,
+      "bottom" : "transformer_residualblock0_pad1",
+      "weights" : {
+
+      },
+      "pad_mode" : 0,
+      "Nx" : 3,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_1_inst_2_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 53,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 51,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_1_inst_2_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_1_inst_2_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 57,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 55,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_1_inst_2_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_residual_1_conv_2",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 59,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_residualblock0_instancenorm1__fwd_bn_",
+      "C" : 128,
+      "type" : "batchnorm",
+      "name" : "transformer_residualblock0_instancenorm1__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock0_instancenorm1__fwd_bn_,transformer_residual_1_inst_2_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock0_instancenorm1__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock0_instancenorm1__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock0_instancenorm1__fwd_mult_gamma,transformer_residual_1_inst_2_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock0_instancenorm1__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock0_instancenorm1__fwd",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_activation2,transformer_residualblock0_instancenorm1__fwd",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock0__plus0",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock0__plus0",
+      "beta" : 0
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_residualblock1_pad0",
+      "pad_pad_mode" : 0,
+      "pad_t" : 1,
+      "pad_r" : 1,
+      "pad_b" : 1,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_residualblock0__plus0",
+      "pad_l" : 1,
+      "name" : "transformer_residualblock1_pad0",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_residual_2_conv_1",
+      "blob_weights" : 61,
+      "K" : 128,
+      "name" : "transformer_residual_2_conv_1",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 128,
+      "bottom" : "transformer_residualblock1_pad0",
+      "weights" : {
+
+      },
+      "pad_mode" : 0,
+      "Nx" : 3,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_2_inst_1_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 65,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 63,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_2_inst_1_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_2_inst_1_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 69,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 67,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_2_inst_1_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_residual_2_conv_1",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 71,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_residualblock1_instancenorm0__fwd_bn_",
+      "C" : 128,
+      "type" : "batchnorm",
+      "name" : "transformer_residualblock1_instancenorm0__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock1_instancenorm0__fwd_bn_,transformer_residual_2_inst_1_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock1_instancenorm0__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock1_instancenorm0__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock1_instancenorm0__fwd_mult_gamma,transformer_residual_2_inst_1_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock1_instancenorm0__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock1_instancenorm0__fwd",
+      "beta" : 0
+    },
+    {
+      "mode" : 0,
+      "weights" : {
+
+      },
+      "top" : "transformer_residualblock1_activation0",
+      "type" : "activation",
+      "name" : "transformer_residualblock1_activation0",
+      "bottom" : "transformer_residualblock1_instancenorm0__fwd"
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_residualblock1_pad1",
+      "pad_pad_mode" : 0,
+      "pad_t" : 1,
+      "pad_r" : 1,
+      "pad_b" : 1,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_residualblock1_activation0",
+      "pad_l" : 1,
+      "name" : "transformer_residualblock1_pad1",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_residual_2_conv_2",
+      "blob_weights" : 73,
+      "K" : 128,
+      "name" : "transformer_residual_2_conv_2",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 128,
+      "bottom" : "transformer_residualblock1_pad1",
+      "weights" : {
+
+      },
+      "pad_mode" : 0,
+      "Nx" : 3,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_2_inst_2_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 77,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 75,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_2_inst_2_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_2_inst_2_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 81,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 79,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_2_inst_2_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_residual_2_conv_2",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 83,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_residualblock1_instancenorm1__fwd_bn_",
+      "C" : 128,
+      "type" : "batchnorm",
+      "name" : "transformer_residualblock1_instancenorm1__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock1_instancenorm1__fwd_bn_,transformer_residual_2_inst_2_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock1_instancenorm1__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock1_instancenorm1__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock1_instancenorm1__fwd_mult_gamma,transformer_residual_2_inst_2_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock1_instancenorm1__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock1_instancenorm1__fwd",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock0__plus0,transformer_residualblock1_instancenorm1__fwd",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock1__plus0",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock1__plus0",
+      "beta" : 0
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_residualblock2_pad0",
+      "pad_pad_mode" : 0,
+      "pad_t" : 1,
+      "pad_r" : 1,
+      "pad_b" : 1,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_residualblock1__plus0",
+      "pad_l" : 1,
+      "name" : "transformer_residualblock2_pad0",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_residual_3_conv_1",
+      "blob_weights" : 85,
+      "K" : 128,
+      "name" : "transformer_residual_3_conv_1",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 128,
+      "bottom" : "transformer_residualblock2_pad0",
+      "weights" : {
+
+      },
+      "pad_mode" : 0,
+      "Nx" : 3,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_3_inst_1_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 89,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 87,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_3_inst_1_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_3_inst_1_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 93,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 91,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_3_inst_1_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_residual_3_conv_1",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 95,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_residualblock2_instancenorm0__fwd_bn_",
+      "C" : 128,
+      "type" : "batchnorm",
+      "name" : "transformer_residualblock2_instancenorm0__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock2_instancenorm0__fwd_bn_,transformer_residual_3_inst_1_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock2_instancenorm0__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock2_instancenorm0__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock2_instancenorm0__fwd_mult_gamma,transformer_residual_3_inst_1_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock2_instancenorm0__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock2_instancenorm0__fwd",
+      "beta" : 0
+    },
+    {
+      "mode" : 0,
+      "weights" : {
+
+      },
+      "top" : "transformer_residualblock2_activation0",
+      "type" : "activation",
+      "name" : "transformer_residualblock2_activation0",
+      "bottom" : "transformer_residualblock2_instancenorm0__fwd"
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_residualblock2_pad1",
+      "pad_pad_mode" : 0,
+      "pad_t" : 1,
+      "pad_r" : 1,
+      "pad_b" : 1,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_residualblock2_activation0",
+      "pad_l" : 1,
+      "name" : "transformer_residualblock2_pad1",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_residual_3_conv_2",
+      "blob_weights" : 97,
+      "K" : 128,
+      "name" : "transformer_residual_3_conv_2",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 128,
+      "bottom" : "transformer_residualblock2_pad1",
+      "weights" : {
+
+      },
+      "pad_mode" : 0,
+      "Nx" : 3,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_3_inst_2_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 101,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 99,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_3_inst_2_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_3_inst_2_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 105,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 103,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_3_inst_2_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_residual_3_conv_2",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 107,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_residualblock2_instancenorm1__fwd_bn_",
+      "C" : 128,
+      "type" : "batchnorm",
+      "name" : "transformer_residualblock2_instancenorm1__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock2_instancenorm1__fwd_bn_,transformer_residual_3_inst_2_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock2_instancenorm1__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock2_instancenorm1__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock2_instancenorm1__fwd_mult_gamma,transformer_residual_3_inst_2_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock2_instancenorm1__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock2_instancenorm1__fwd",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock1__plus0,transformer_residualblock2_instancenorm1__fwd",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock2__plus0",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock2__plus0",
+      "beta" : 0
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_residualblock3_pad0",
+      "pad_pad_mode" : 0,
+      "pad_t" : 1,
+      "pad_r" : 1,
+      "pad_b" : 1,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_residualblock2__plus0",
+      "pad_l" : 1,
+      "name" : "transformer_residualblock3_pad0",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_residual_4_conv_1",
+      "blob_weights" : 109,
+      "K" : 128,
+      "name" : "transformer_residual_4_conv_1",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 128,
+      "bottom" : "transformer_residualblock3_pad0",
+      "weights" : {
+
+      },
+      "pad_mode" : 0,
+      "Nx" : 3,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_4_inst_1_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 113,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 111,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_4_inst_1_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_4_inst_1_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 117,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 115,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_4_inst_1_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_residual_4_conv_1",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 119,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_residualblock3_instancenorm0__fwd_bn_",
+      "C" : 128,
+      "type" : "batchnorm",
+      "name" : "transformer_residualblock3_instancenorm0__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock3_instancenorm0__fwd_bn_,transformer_residual_4_inst_1_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock3_instancenorm0__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock3_instancenorm0__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock3_instancenorm0__fwd_mult_gamma,transformer_residual_4_inst_1_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock3_instancenorm0__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock3_instancenorm0__fwd",
+      "beta" : 0
+    },
+    {
+      "mode" : 0,
+      "weights" : {
+
+      },
+      "top" : "transformer_residualblock3_activation0",
+      "type" : "activation",
+      "name" : "transformer_residualblock3_activation0",
+      "bottom" : "transformer_residualblock3_instancenorm0__fwd"
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_residualblock3_pad1",
+      "pad_pad_mode" : 0,
+      "pad_t" : 1,
+      "pad_r" : 1,
+      "pad_b" : 1,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_residualblock3_activation0",
+      "pad_l" : 1,
+      "name" : "transformer_residualblock3_pad1",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_residual_4_conv_2",
+      "blob_weights" : 121,
+      "K" : 128,
+      "name" : "transformer_residual_4_conv_2",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 128,
+      "bottom" : "transformer_residualblock3_pad1",
+      "weights" : {
+
+      },
+      "pad_mode" : 0,
+      "Nx" : 3,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_4_inst_2_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 125,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 123,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_4_inst_2_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_4_inst_2_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 129,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 127,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_4_inst_2_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_residual_4_conv_2",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 131,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_residualblock3_instancenorm1__fwd_bn_",
+      "C" : 128,
+      "type" : "batchnorm",
+      "name" : "transformer_residualblock3_instancenorm1__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock3_instancenorm1__fwd_bn_,transformer_residual_4_inst_2_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock3_instancenorm1__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock3_instancenorm1__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock3_instancenorm1__fwd_mult_gamma,transformer_residual_4_inst_2_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock3_instancenorm1__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock3_instancenorm1__fwd",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock2__plus0,transformer_residualblock3_instancenorm1__fwd",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock3__plus0",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock3__plus0",
+      "beta" : 0
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_residualblock4_pad0",
+      "pad_pad_mode" : 0,
+      "pad_t" : 1,
+      "pad_r" : 1,
+      "pad_b" : 1,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_residualblock3__plus0",
+      "pad_l" : 1,
+      "name" : "transformer_residualblock4_pad0",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_residual_5_conv_1",
+      "blob_weights" : 133,
+      "K" : 128,
+      "name" : "transformer_residual_5_conv_1",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 128,
+      "bottom" : "transformer_residualblock4_pad0",
+      "weights" : {
+
+      },
+      "pad_mode" : 0,
+      "Nx" : 3,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_5_inst_1_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 137,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 135,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_5_inst_1_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_5_inst_1_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 141,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 139,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_5_inst_1_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_residual_5_conv_1",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 143,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_residualblock4_instancenorm0__fwd_bn_",
+      "C" : 128,
+      "type" : "batchnorm",
+      "name" : "transformer_residualblock4_instancenorm0__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock4_instancenorm0__fwd_bn_,transformer_residual_5_inst_1_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock4_instancenorm0__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock4_instancenorm0__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock4_instancenorm0__fwd_mult_gamma,transformer_residual_5_inst_1_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock4_instancenorm0__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock4_instancenorm0__fwd",
+      "beta" : 0
+    },
+    {
+      "mode" : 0,
+      "weights" : {
+
+      },
+      "top" : "transformer_residualblock4_activation0",
+      "type" : "activation",
+      "name" : "transformer_residualblock4_activation0",
+      "bottom" : "transformer_residualblock4_instancenorm0__fwd"
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_residualblock4_pad1",
+      "pad_pad_mode" : 0,
+      "pad_t" : 1,
+      "pad_r" : 1,
+      "pad_b" : 1,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_residualblock4_activation0",
+      "pad_l" : 1,
+      "name" : "transformer_residualblock4_pad1",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_residual_5_conv_2",
+      "blob_weights" : 145,
+      "K" : 128,
+      "name" : "transformer_residual_5_conv_2",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 128,
+      "bottom" : "transformer_residualblock4_pad1",
+      "weights" : {
+
+      },
+      "pad_mode" : 0,
+      "Nx" : 3,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_5_inst_2_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 149,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 147,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_5_inst_2_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_residual_5_inst_2_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 128,
+      "blob_weights" : 153,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 151,
+      "has_tanh" : 0,
+      "name" : "transformer_residual_5_inst_2_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_residual_5_conv_2",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 155,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_residualblock4_instancenorm1__fwd_bn_",
+      "C" : 128,
+      "type" : "batchnorm",
+      "name" : "transformer_residualblock4_instancenorm1__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock4_instancenorm1__fwd_bn_,transformer_residual_5_inst_2_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock4_instancenorm1__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock4_instancenorm1__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock4_instancenorm1__fwd_mult_gamma,transformer_residual_5_inst_2_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock4_instancenorm1__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock4_instancenorm1__fwd",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_residualblock3__plus0,transformer_residualblock4_instancenorm1__fwd",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_residualblock4__plus0",
+      "type" : "elementwise",
+      "name" : "transformer_residualblock4__plus0",
+      "beta" : 0
+    },
+    {
+      "bottom" : "transformer_residualblock4__plus0",
+      "scaling_factor_y" : 2,
+      "align_corners" : 0,
+      "mode" : 0,
+      "weights" : {
+
+      },
+      "top" : "transformer_upsampling0",
+      "scaling_factor_x" : 2,
+      "type" : "upsample",
+      "name" : "transformer_upsampling0"
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_pad3",
+      "pad_pad_mode" : 0,
+      "pad_t" : 1,
+      "pad_r" : 1,
+      "pad_b" : 1,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_upsampling0",
+      "pad_l" : 1,
+      "name" : "transformer_pad3",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_decoding_1_conv",
+      "blob_weights" : 157,
+      "K" : 128,
+      "name" : "transformer_decoding_1_conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 64,
+      "bottom" : "transformer_pad3",
+      "weights" : {
+
+      },
+      "pad_mode" : 0,
+      "Nx" : 3,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_decoding_1_inst_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 64,
+      "blob_weights" : 161,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 159,
+      "has_tanh" : 0,
+      "name" : "transformer_decoding_1_inst_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_decoding_1_inst_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 64,
+      "blob_weights" : 165,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 163,
+      "has_tanh" : 0,
+      "name" : "transformer_decoding_1_inst_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_decoding_1_conv",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 167,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_instancenorm3__fwd_bn_",
+      "C" : 64,
+      "type" : "batchnorm",
+      "name" : "transformer_instancenorm3__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_instancenorm3__fwd_bn_,transformer_decoding_1_inst_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_instancenorm3__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_instancenorm3__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_instancenorm3__fwd_mult_gamma,transformer_decoding_1_inst_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_instancenorm3__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_instancenorm3__fwd",
+      "beta" : 0
+    },
+    {
+      "mode" : 0,
+      "weights" : {
+
+      },
+      "top" : "transformer_activation3",
+      "type" : "activation",
+      "name" : "transformer_activation3",
+      "bottom" : "transformer_instancenorm3__fwd"
+    },
+    {
+      "bottom" : "transformer_activation3",
+      "scaling_factor_y" : 2,
+      "align_corners" : 0,
+      "mode" : 0,
+      "weights" : {
+
+      },
+      "top" : "transformer_upsampling1",
+      "scaling_factor_x" : 2,
+      "type" : "upsample",
+      "name" : "transformer_upsampling1"
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_pad4",
+      "pad_pad_mode" : 0,
+      "pad_t" : 1,
+      "pad_r" : 1,
+      "pad_b" : 1,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_upsampling1",
+      "pad_l" : 1,
+      "name" : "transformer_pad4",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_decoding_2_conv",
+      "blob_weights" : 169,
+      "K" : 64,
+      "name" : "transformer_decoding_2_conv",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 32,
+      "bottom" : "transformer_pad4",
+      "weights" : {
+
+      },
+      "pad_mode" : 0,
+      "Nx" : 3,
+      "pad_value" : 0,
+      "Ny" : 3,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_decoding_2_inst_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 32,
+      "blob_weights" : 173,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 171,
+      "has_tanh" : 0,
+      "name" : "transformer_decoding_2_inst_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_decoding_2_inst_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 32,
+      "blob_weights" : 177,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 175,
+      "has_tanh" : 0,
+      "name" : "transformer_decoding_2_inst_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_decoding_2_conv",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 179,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_instancenorm4__fwd_bn_",
+      "C" : 32,
+      "type" : "batchnorm",
+      "name" : "transformer_instancenorm4__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_instancenorm4__fwd_bn_,transformer_decoding_2_inst_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_instancenorm4__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_instancenorm4__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_instancenorm4__fwd_mult_gamma,transformer_decoding_2_inst_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_instancenorm4__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_instancenorm4__fwd",
+      "beta" : 0
+    },
+    {
+      "mode" : 0,
+      "weights" : {
+
+      },
+      "top" : "transformer_activation4",
+      "type" : "activation",
+      "name" : "transformer_activation4",
+      "bottom" : "transformer_instancenorm4__fwd"
+    },
+    {
+      "pad_value" : 0,
+      "top" : "transformer_pad5",
+      "pad_pad_mode" : 0,
+      "pad_t" : 4,
+      "pad_r" : 4,
+      "pad_b" : 4,
+      "type" : "general_padding",
+      "pad_fill_mode" : 2,
+      "bottom" : "transformer_activation4",
+      "pad_l" : 4,
+      "name" : "transformer_pad5",
+      "weights" : {
+
+      }
+    },
+    {
+      "pad_r" : 0,
+      "fused_relu" : 0,
+      "fused_tanh" : 0,
+      "pad_fill_mode" : 0,
+      "pad_b" : 0,
+      "pad_l" : 0,
+      "top" : "transformer_conv5",
+      "blob_weights" : 181,
+      "K" : 32,
+      "name" : "transformer_conv5",
+      "has_batch_norm" : 0,
+      "type" : "convolution",
+      "n_groups" : 1,
+      "pad_t" : 0,
+      "has_biases" : 0,
+      "C" : 3,
+      "bottom" : "transformer_pad5",
+      "weights" : {
+
+      },
+      "pad_mode" : 0,
+      "Nx" : 9,
+      "pad_value" : 0,
+      "Ny" : 9,
+      "n_parallel" : 1
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_instancenorm5_gamma",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 3,
+      "blob_weights" : 185,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 183,
+      "has_tanh" : 0,
+      "name" : "transformer_instancenorm5_gamma",
+      "has_prelu" : 0
+    },
+    {
+      "nB" : 1,
+      "top" : "transformer_instancenorm5_beta",
+      "has_biases" : 1,
+      "weights" : {
+
+      },
+      "nC" : 3,
+      "blob_weights" : 189,
+      "type" : "inner_product",
+      "has_relu" : 0,
+      "bottom" : "index",
+      "blob_biases" : 187,
+      "has_tanh" : 0,
+      "name" : "transformer_instancenorm5_beta",
+      "has_prelu" : 0
+    },
+    {
+      "bottom" : "transformer_conv5",
+      "training_instancenorm" : 1,
+      "training_momentum" : 0.89999997615814209,
+      "training" : 1,
+      "blob_batchnorm_params" : 191,
+      "weights" : {
+
+      },
+      "training_eps" : 9.9999997473787516e-06,
+      "top" : "transformer_instancenorm5__fwd_bn_",
+      "C" : 3,
+      "type" : "batchnorm",
+      "name" : "transformer_instancenorm5__fwd_bn_"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_instancenorm5__fwd_bn_,transformer_instancenorm5_gamma",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_instancenorm5__fwd_mult_gamma",
+      "type" : "elementwise",
+      "name" : "transformer_instancenorm5__fwd_mult_gamma",
+      "beta" : 0
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_instancenorm5__fwd_mult_gamma,transformer_instancenorm5_beta",
+      "operation" : 0,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "transformer_instancenorm5__fwd",
+      "type" : "elementwise",
+      "name" : "transformer_instancenorm5__fwd",
+      "beta" : 0
+    },
+    {
+      "mode" : 3,
+      "weights" : {
+
+      },
+      "top" : "transformer_activation5",
+      "type" : "activation",
+      "name" : "transformer_activation5",
+      "bottom" : "transformer_instancenorm5__fwd"
+    },
+    {
+      "k" : 1,
+      "bottom" : "",
+      "n" : 1,
+      "weights" : {
+
+      },
+      "h" : 1,
+      "constant_blob" : 193,
+      "top" : "stylizedImage_constant_in_scale",
+      "w" : 1,
+      "type" : "load_constant",
+      "name" : "stylizedImage_constant_in_scale"
+    },
+    {
+      "alpha" : 1,
+      "bottom" : "transformer_activation5,stylizedImage_constant_in_scale",
+      "operation" : 1,
+      "weights" : {
+
+      },
+      "fused_relu" : 0,
+      "top" : "stylizedImage",
+      "type" : "elementwise",
+      "name" : "stylizedImage",
+      "beta" : 0
+    }
+  ]
+}
